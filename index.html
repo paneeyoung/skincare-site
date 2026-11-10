@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Allura&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#F3EEE5;color:#2B2E22;font-family:'Jost',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#4E5A36;text-decoration:none}a:hover{color:#B08D57}
+*{box-sizing:border-box}
+input::placeholder{color:#8C8A7C}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#F3EEE5;overflow-x:hidden">
+
+<sc-if value="{{ showAnnouncement }}" hint-placeholder-val="{{ true }}">
+<div style="background:#4E5A36;color:#F3EEE5;text-align:center;padding:10px 20px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase">Free shipping on orders over €50 · Plastic-free packaging</div>
+</sc-if>
+
+<header style="max-width:1320px;margin:0 auto;padding:22px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+  <a href="#" onClick="{{ goHome }}" style="display:flex;flex-direction:column;align-items:center;line-height:1;color:#2B2E22">
+    <span style="font-family:'Allura',cursive;font-size:68px;line-height:0.8;color:#B08D57;padding:6px 6px 0">M</span>
+    <span style="font-family:'Jost',sans-serif;font-size:14px;font-weight:400;letter-spacing:0.36em;margin:8px -0.36em 0 0;color:#4A4F3F">MODEE</span>
+    <span style="font-family:'Jost',sans-serif;font-size:10px;font-weight:400;letter-spacing:0.3em;margin:5px -0.3em 0 0;color:#4A4F3F">CREATIVE</span>
+  </a>
+  <nav style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;background:#FAF7F1;border-radius:999px;padding:6px;box-shadow:0 1px 0 rgba(43,46,34,0.06)">
+    <a href="#" onClick="{{ goHome }}" style="padding:9px 18px;border-radius:999px;background:{{ navHomeBg }};color:{{ navHomeColor }};font-size:13px;letter-spacing:0.04em">Home</a>
+    <a href="#" onClick="{{ goShop }}" style="padding:9px 18px;border-radius:999px;background:{{ navShopBg }};color:{{ navShopColor }};font-size:13px;letter-spacing:0.04em">Shop</a>
+    <a href="#" data-target="best" onClick="{{ navTo }}" style="padding:9px 16px;border-radius:999px;color:#2B2E22;font-size:13px" style-hover="background:#ECE6DA">Best Sellers</a>
+    <a href="#" data-target="ritual" onClick="{{ navTo }}" style="padding:9px 16px;border-radius:999px;color:#2B2E22;font-size:13px" style-hover="background:#ECE6DA">Rituals</a>
+    <a href="#" data-target="story" onClick="{{ navTo }}" style="padding:9px 16px;border-radius:999px;color:#2B2E22;font-size:13px" style-hover="background:#ECE6DA">Our Story</a>
+    <a href="#" data-target="journal" onClick="{{ navTo }}" style="padding:9px 16px;border-radius:999px;color:#2B2E22;font-size:13px" style-hover="background:#ECE6DA">Journal</a>
+  </nav>
+  <div style="display:flex;gap:18px;align-items:center;color:#2B2E22">
+    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-4.5-4.5"></path></svg>
+    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path></svg>
+    <div onClick="{{ goCart }}" style="position:relative;display:flex;cursor:pointer">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 8h14l-1 13H6zM9 8V6a3 3 0 0 1 6 0v2"></path></svg>
+      <span style="position:absolute;top:-6px;right:-9px;min-width:18px;height:18px;border-radius:9px;background:#B08D57;color:#FAF7F1;font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center;padding:0 4px">{{ cartCount }}</span>
+    </div>
+  </div>
+</header>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<sc-if value="{{ isArch }}" hint-placeholder-val="{{ true }}">
+<section data-screen-label="Hero" style="max-width:1320px;margin:0 auto;padding:40px 40px 72px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:56px;align-items:center">
+  <div style="display:flex;flex-direction:column;gap:26px;max-width:560px">
+    <div style="display:flex;align-items:center;gap:16px;font-size:12px;letter-spacing:0.28em;color:#4E5A36;text-transform:uppercase">Clean ingredients. Real results.<span style="flex:0 0 56px;height:1px;background:#B08D57"></span></div>
+    <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(52px,6.4vw,92px);line-height:0.95;letter-spacing:-0.01em;color:#2B2E22">Hydrate.<br>Restore.<br><span style="font-family:'Allura',cursive;font-weight:400;color:#4E5A36;font-size:1.12em;line-height:1.1">Glow naturally.</span></h1>
+    <p style="margin:0;font-size:17px;line-height:1.65;color:#55574A;max-width:440px;text-wrap:pretty">Small-batch skincare made from cold-pressed botanicals and nothing your skin doesn't need.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+      <a href="#" onClick="{{ goShop }}" style="display:flex;align-items:center;gap:12px;background:#4E5A36;color:#FAF7F1;padding:16px 28px;border-radius:999px;font-size:13px;letter-spacing:0.16em;text-transform:uppercase" style-hover="background:#3E4829">Shop now<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      <a href="#" data-target="story" onClick="{{ navTo }}" style="padding:16px 8px;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:#2B2E22;border-bottom:1px solid #B08D57">Explore our story</a>
+    </div>
+    <div style="display:flex;gap:28px;flex-wrap:wrap;padding-top:18px;border-top:1px solid #DDD5C6">
+      <div style="display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#55574A"><span style="width:40px;height:40px;border-radius:50%;border:1px solid #C9BFA9;display:flex;align-items:center;justify-content:center;color:#4E5A36"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 19c0-8 6-14 14-14 0 8-6 14-14 14zM5 19l7-7"></path></svg></span>Plant based</div>
+      <div style="display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#55574A"><span style="width:40px;height:40px;border-radius:50%;border:1px solid #C9BFA9;display:flex;align-items:center;justify-content:center;color:#4E5A36"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"></path></svg></span>Cruelty free</div>
+      <div style="display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#55574A"><span style="width:40px;height:40px;border-radius:50%;border:1px solid #C9BFA9;display:flex;align-items:center;justify-content:center;color:#4E5A36"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"></path></svg></span>Derm tested</div>
+    </div>
+  </div>
+  <div style="position:relative;display:flex;justify-content:center;padding:24px 0">
+    <div style="position:relative;width:min(100%,440px);aspect-ratio:440/580;margin-top:24px">
+      <image-slot id="hero-arch" src="images/face1.png" shape="rounded" radius="24" placeholder="Hero photo"></image-slot>
+    </div>
+    <div style="position:absolute;bottom:8px;right:4%;width:128px;height:128px;border-radius:50%;background:#FAF7F1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;box-shadow:0 10px 30px rgba(43,46,34,0.12)">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4E5A36" stroke-width="1.3"><path d="M12 21V9M12 13c-4 0-6-3-6-7 4 0 6 3 6 7zM12 11c4 0 6-3 6-7-4 0-6 3-6 7z"></path></svg>
+      <span style="font-size:10px;letter-spacing:0.2em;line-height:1.5;color:#2B2E22">MADE WITH<br>NATURAL<br>INGREDIENTS</span>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isFull }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Hero" style="position:relative;min-height:min(820px,calc(100vh - 110px));margin:0 0 72px;overflow:hidden;display:flex;align-items:center">
+  <div style="position:absolute;inset:0"><image-slot id="hero-full" src="images/hero-woman.png" shape="rect" placeholder="Full-bleed lifestyle photo — model applying cream, warm light (subject on right)"></image-slot></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(243,238,229,0.94) 0%,rgba(243,238,229,0.7) 30%,rgba(243,238,229,0) 52%);pointer-events:none"></div>
+  <div style="position:relative;padding:64px clamp(28px,5vw,72px);display:flex;flex-direction:column;gap:26px;max-width:540px;pointer-events:none">
+    <div style="font-size:12px;letter-spacing:0.28em;color:#4E5A36;text-transform:uppercase">Natural. Pure. Effective.</div>
+    <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(52px,6.4vw,92px);line-height:0.95;color:#2B2E22">Hydrate.<br>Restore.<br><span style="font-family:'Allura',cursive;font-weight:400;color:#4E5A36;font-size:1.12em;line-height:1.1">Glow naturally.</span></h1>
+    <p style="margin:0;font-size:17px;line-height:1.65;color:#3F4136;max-width:420px">Small-batch skincare made from cold-pressed botanicals and nothing your skin doesn't need.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;pointer-events:auto">
+      <a href="#" onClick="{{ goShop }}" style="display:flex;align-items:center;gap:12px;background:#4E5A36;color:#FAF7F1;padding:16px 28px;border-radius:999px;font-size:13px;letter-spacing:0.16em;text-transform:uppercase">Shop now<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      <a href="#" data-target="story" onClick="{{ navTo }}" style="padding:16px 8px;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:#2B2E22;border-bottom:1px solid #B08D57">Explore our story</a>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<section id="shop" data-screen-label="Categories" style="max-width:1320px;margin:0 auto;padding:24px 40px 88px">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:32px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <span style="font-size:12px;letter-spacing:0.28em;color:#B08D57;text-transform:uppercase">Shop by category</span>
+      <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,3.6vw,48px);line-height:1.05">Every step of your ritual</h2>
+    </div>
+    <a href="#" onClick="{{ goShop }}" style="display:flex;align-items:center;gap:10px;font-size:13px;letter-spacing:0.14em;text-transform:uppercase">View all categories<span style="width:30px;height:30px;border-radius:50%;background:#4E5A36;color:#FAF7F1;display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></a>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:18px">
+    <a href="#" data-cat="Cleanse &amp; Tone" onClick="{{ goShop }}" style="display:flex;flex-direction:column;background:#FAF7F1;border-radius:20px;overflow:hidden;color:#2B2E22;cursor:pointer" style-hover="transform:translateY(-3px)"><div style="aspect-ratio:4/5"><image-slot id="cat-cleansers" src="images/cleanser-hands.png" shape="rect" placeholder="Cleansers"></image-slot></div><div style="padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px"><span style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500">Cleansers</span><span style="font-size:12px;letter-spacing:0.12em;color:#6B6A5C;text-transform:uppercase">Shop now →</span></div></a>
+    <a href="#" data-cat="Serums &amp; Oils" onClick="{{ goShop }}" style="display:flex;flex-direction:column;background:#FAF7F1;border-radius:20px;overflow:hidden;color:#2B2E22;cursor:pointer" style-hover="transform:translateY(-3px)"><div style="aspect-ratio:4/5"><image-slot id="cat-serums" src="images/serum-dropper.png" shape="rect" placeholder="Serums"></image-slot></div><div style="padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px"><span style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500">Serums</span><span style="font-size:12px;letter-spacing:0.12em;color:#6B6A5C;text-transform:uppercase">Shop now →</span></div></a>
+    <a href="#" data-cat="Moisturizers" onClick="{{ goShop }}" style="display:flex;flex-direction:column;background:#FAF7F1;border-radius:20px;overflow:hidden;color:#2B2E22;cursor:pointer" style-hover="transform:translateY(-3px)"><div style="aspect-ratio:4/5"><image-slot id="cat-moisturizers" src="images/cream-finger.png" shape="rect" placeholder="Moisturizers"></image-slot></div><div style="padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px"><span style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500">Moisturizers</span><span style="font-size:12px;letter-spacing:0.12em;color:#6B6A5C;text-transform:uppercase">Shop now →</span></div></a>
+    <a href="#" data-cat="Serums &amp; Oils" onClick="{{ goShop }}" style="display:flex;flex-direction:column;background:#FAF7F1;border-radius:20px;overflow:hidden;color:#2B2E22;cursor:pointer" style-hover="transform:translateY(-3px)"><div style="aspect-ratio:4/5"><image-slot id="cat-oils" src="images/texture.png" shape="rect" placeholder="Face oils"></image-slot></div><div style="padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px"><span style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500">Face Oils</span><span style="font-size:12px;letter-spacing:0.12em;color:#6B6A5C;text-transform:uppercase">Shop now →</span></div></a>
+    <a href="#" data-cat="Sun Care" onClick="{{ goShop }}" style="display:flex;flex-direction:column;background:#FAF7F1;border-radius:20px;overflow:hidden;color:#2B2E22;cursor:pointer" style-hover="transform:translateY(-3px)"><div style="aspect-ratio:4/5"><image-slot id="cat-masks" src="images/suncare.png" shape="rect" placeholder="Sun care"></image-slot></div><div style="padding:16px 18px 18px;display:flex;flex-direction:column;gap:4px"><span style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500">Sun Care</span><span style="font-size:12px;letter-spacing:0.12em;color:#6B6A5C;text-transform:uppercase">Shop now →</span></div></a>
+  </div>
+</section>
+
+<section id="best" data-screen-label="Best sellers" style="background:#FAF7F1;padding:88px 0">
+  <div style="max-width:1320px;margin:0 auto;padding:0 40px">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:36px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <span style="font-size:12px;letter-spacing:0.28em;color:#B08D57;text-transform:uppercase">Our best sellers</span>
+        <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,3.6vw,48px);line-height:1.05">Loved by skin, chosen by you</h2>
+      </div>
+      <a href="#" onClick="{{ goShop }}" style="display:flex;align-items:center;gap:10px;border:1px solid #C9BFA9;padding:13px 22px;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#2B2E22">View all products →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:24px">
+      <div style="display:flex;flex-direction:column;gap:16px"><div style="aspect-ratio:1/1.1;border-radius:16px;overflow:hidden;background:#EDE6D8"><image-slot id="prod-cleanser" src="images/cleanser-hands.png" shape="rect" placeholder="Oat Milk Cleanser"></image-slot></div><div style="display:flex;flex-direction:column;gap:14px"><div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600">Oat Milk Cleanser</span><span style="font-size:13px;color:#6B6A5C">Gentle daily wash · 150 ml</span><span style="font-size:15px;font-weight:500;margin-top:6px">€28.00</span></div><button data-id="1" onClick="{{ addToCart }}" style="width:100%;border:none;cursor:pointer;background:#4E5A36;color:#FAF7F1;border-radius:999px;padding:14px 18px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.14em;text-transform:uppercase" style-hover="background:#3E4829">Add to cart</button></div></div>
+      <div style="display:flex;flex-direction:column;gap:16px"><div style="aspect-ratio:1/1.1;border-radius:16px;overflow:hidden;background:#EDE6D8"><image-slot id="prod-serum" src="images/serum-shelf.png" shape="rect" placeholder="Radiance Glow Serum"></image-slot></div><div style="display:flex;flex-direction:column;gap:14px"><div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600">Radiance Glow Serum</span><span style="font-size:13px;color:#6B6A5C">Niacinamide + hyaluronic · 30 ml</span><span style="font-size:15px;font-weight:500;margin-top:6px">€45.00</span></div><button data-id="2" onClick="{{ addToCart }}" style="width:100%;border:none;cursor:pointer;background:#4E5A36;color:#FAF7F1;border-radius:999px;padding:14px 18px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.14em;text-transform:uppercase" style-hover="background:#3E4829">Add to cart</button></div></div>
+      <div style="display:flex;flex-direction:column;gap:16px"><div style="aspect-ratio:1/1.1;border-radius:16px;overflow:hidden;background:#EDE6D8"><image-slot id="prod-cream" src="images/cream-jar.png" shape="rect" placeholder="Barrier Repair Cream"></image-slot></div><div style="display:flex;flex-direction:column;gap:14px"><div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600">Barrier Repair Cream</span><span style="font-size:13px;color:#6B6A5C">Squalane + ceramides · 50 ml</span><span style="font-size:15px;font-weight:500;margin-top:6px">€42.00</span></div><button data-id="3" onClick="{{ addToCart }}" style="width:100%;border:none;cursor:pointer;background:#4E5A36;color:#FAF7F1;border-radius:999px;padding:14px 18px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.14em;text-transform:uppercase" style-hover="background:#3E4829">Add to cart</button></div></div>
+      <div style="display:flex;flex-direction:column;gap:16px"><div style="aspect-ratio:1/1.1;border-radius:16px;overflow:hidden;background:#EDE6D8"><image-slot id="prod-toner" src="images/glass-bottle.png" shape="rect" placeholder="Centella Calming Toner"></image-slot></div><div style="display:flex;flex-direction:column;gap:14px"><div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600">Centella Calming Toner</span><span style="font-size:13px;color:#6B6A5C">Soothe &amp; balance · 150 ml</span><span style="font-size:15px;font-weight:500;margin-top:6px">€32.00</span></div><button data-id="4" onClick="{{ addToCart }}" style="width:100%;border:none;cursor:pointer;background:#4E5A36;color:#FAF7F1;border-radius:999px;padding:14px 18px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.14em;text-transform:uppercase" style-hover="background:#3E4829">Add to cart</button></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="ritual" data-screen-label="Daily ritual" style="background:#4E5A36;color:#F3EEE5;padding:96px 40px;position:relative;overflow:hidden">
+  <div style="position:absolute;top:30px;left:50%;transform:translateX(-50%);font-family:'Cormorant Garamond',serif;font-size:clamp(120px,22vw,320px);line-height:0.8;letter-spacing:0.04em;color:#5A6741;pointer-events:none;white-space:nowrap">SKIN</div>
+  <div style="position:relative;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:48px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:0">
+      <div style="display:flex;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid #6B7752"><span style="flex:0 0 52px;height:52px;border-radius:50%;border:1px solid #B8A47C;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F3EEE5" stroke-width="1.3"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"></path></svg></span><span style="font-size:13px;letter-spacing:0.2em;text-transform:uppercase;line-height:1.5">Hydrates<br>deeply</span></div>
+      <div style="display:flex;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid #6B7752"><span style="flex:0 0 52px;height:52px;border-radius:50%;border:1px solid #B8A47C;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F3EEE5" stroke-width="1.3"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"></path></svg></span><span style="font-size:13px;letter-spacing:0.2em;text-transform:uppercase;line-height:1.5">Brightens<br>skin tone</span></div>
+      <div style="display:flex;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid #6B7752"><span style="flex:0 0 52px;height:52px;border-radius:50%;border:1px solid #B8A47C;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F3EEE5" stroke-width="1.3"><path d="M5 19c0-8 6-14 14-14 0 8-6 14-14 14zM5 19l7-7"></path></svg></span><span style="font-size:13px;letter-spacing:0.2em;text-transform:uppercase;line-height:1.5">Nourishes<br>naturally</span></div>
+      <div style="display:flex;align-items:center;gap:18px;padding:18px 0"><span style="flex:0 0 52px;height:52px;border-radius:50%;border:1px solid #B8A47C;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F3EEE5" stroke-width="1.3"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"></path></svg></span><span style="font-size:13px;letter-spacing:0.2em;text-transform:uppercase;line-height:1.5">Strengthens<br>skin barrier</span></div>
+    </div>
+    <div style="position:relative;display:flex;justify-content:center">
+      <div style="position:absolute;inset:-14px 6%;border:1px solid #B8A47C;border-radius:200px 200px 0 0"></div>
+      <div style="position:relative;width:min(100%,360px);aspect-ratio:360/500"><image-slot id="ritual-serum" src="images/serum-dropper.png" shape="rect" mask="inset(0 round 180px 180px 0 0)" placeholder="Serum bottle on cream swatch, top-down"></image-slot></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <div style="line-height:0.9"><span style="font-family:'Allura',cursive;font-size:64px;color:#D9C69E">Daily</span><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(44px,4.6vw,64px);font-weight:500;letter-spacing:0.04em;margin-top:4px">SKIN<br>RITUAL</div></div>
+      <span style="width:60px;height:1px;background:#B8A47C"></span>
+      <p style="margin:0;font-size:16px;line-height:1.7;color:#E4E0D2;max-width:320px;text-wrap:pretty">Healthy skin isn't an overnight fix. It's a daily ritual — cleanse, treat, protect. Consistency is the real secret.</p>
+      <a href="#" style="display:flex;align-items:center;gap:12px;align-self:flex-start;background:#F3EEE5;color:#2B2E22;padding:15px 24px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase" style-hover="background:#FFFFFF">Build your ritual<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+    </div>
+  </div>
+</section>
+
+<section id="story" data-screen-label="Our promise" style="max-width:1320px;margin:0 auto;padding:96px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:64px;align-items:center">
+  <div style="display:flex;flex-direction:column;gap:22px">
+    <span style="font-size:12px;letter-spacing:0.28em;color:#B08D57;text-transform:uppercase">Our promise</span>
+    <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(36px,4vw,54px);line-height:1.05">Skincare that cares for you <span style="font-style:italic;color:#4E5A36">&amp; the planet</span></h2>
+    <p style="margin:0;font-size:16px;line-height:1.7;color:#55574A;max-width:480px;text-wrap:pretty">Every formula starts in a garden, not a lab catalogue. We source organic botanicals from small growers, press them gently, and bottle them in glass you can refill.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;margin-top:8px">
+      <div style="display:flex;flex-direction:column;gap:10px;padding:20px;background:#FAF7F1;border-radius:16px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E5A36" stroke-width="1.3"><path d="M3 7l9-4 9 4v10l-9 4-9-4zM3 7l9 4 9-4M12 11v10"></path></svg><span style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;line-height:1.5">Refillable glass</span></div>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:20px;background:#FAF7F1;border-radius:16px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E5A36" stroke-width="1.3"><path d="M5 19c0-8 6-14 14-14 0 8-6 14-14 14zM5 19l7-7"></path></svg><span style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;line-height:1.5">Certified organic</span></div>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:20px;background:#FAF7F1;border-radius:16px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4E5A36" stroke-width="1.3"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"></path></svg><span style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;line-height:1.5">Never tested on animals</span></div>
+    </div>
+    <a href="#" style="align-self:flex-start;margin-top:8px;padding:14px 0;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:#2B2E22;border-bottom:1px solid #B08D57">Learn our story →</a>
+  </div>
+  <div style="aspect-ratio:5/4;border-radius:24px;overflow:hidden"><image-slot id="promise-group" src="images/group.png" shape="rect" placeholder="Product group on stone plinth with leaves"></image-slot></div>
+</section>
+
+<section id="journal" data-screen-label="Testimonials" style="background:#FAF7F1;padding:88px 40px">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:40px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+      <span style="font-size:12px;letter-spacing:0.28em;color:#B08D57;text-transform:uppercase">Real skin, real stories</span>
+      <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,3.6vw,48px);line-height:1.05">What our customers say</h2>
+    </div>
+    <div style="width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:22px">
+      <figure style="margin:0;padding:30px;border:1px solid #E4DCCC;border-radius:18px;display:flex;flex-direction:column;gap:18px;background:#F3EEE5"><span style="color:#B08D57;letter-spacing:0.2em;font-size:15px">★★★★★</span><blockquote style="margin:0;font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.4;font-style:italic">"My skin finally feels calm. Three weeks with the serum and the redness is just… gone."</blockquote><figcaption style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#6B6A5C">— Sarah M.</figcaption></figure>
+      <figure style="margin:0;padding:30px;border:1px solid #E4DCCC;border-radius:18px;display:flex;flex-direction:column;gap:18px;background:#F3EEE5"><span style="color:#B08D57;letter-spacing:0.2em;font-size:15px">★★★★★</span><blockquote style="margin:0;font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.4;font-style:italic">"I can actually read every ingredient on the label. That alone won me over."</blockquote><figcaption style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#6B6A5C">— Olivia T.</figcaption></figure>
+      <figure style="margin:0;padding:30px;border:1px solid #E4DCCC;border-radius:18px;display:flex;flex-direction:column;gap:18px;background:#F3EEE5"><span style="color:#B08D57;letter-spacing:0.2em;font-size:15px">★★★★★</span><blockquote style="margin:0;font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.4;font-style:italic">"The barrier cream got me through winter. Light, no perfume, and it lasts ages."</blockquote><figcaption style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#6B6A5C">— Emily R.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Perks" style="background:#DCDDCB;padding:26px 40px">
+  <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
+    <div style="display:flex;align-items:center;gap:14px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4E5A36" stroke-width="1.3"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"></path><circle cx="7" cy="18" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg><div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase">Free shipping</span><span style="font-size:13px;color:#55574A">On orders over €50</span></div></div>
+    <div style="display:flex;align-items:center;gap:14px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4E5A36" stroke-width="1.3"><path d="M4 10h11a5 5 0 0 1 0 10H9M4 10l4-4M4 10l4 4"></path></svg><div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase">Easy returns</span><span style="font-size:13px;color:#55574A">30-day skin guarantee</span></div></div>
+    <div style="display:flex;align-items:center;gap:14px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4E5A36" stroke-width="1.3"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg><div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase">Secure payments</span><span style="font-size:13px;color:#55574A">100% protected checkout</span></div></div>
+    <div style="display:flex;align-items:center;gap:14px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#4E5A36" stroke-width="1.3"><rect x="4" y="4" width="16" height="16" rx="5"></rect><circle cx="12" cy="12" r="3.5"></circle></svg><div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase">Join the community</span><span style="font-size:13px;color:#55574A">@verdelle.skin</span></div></div>
+  </div>
+</section>
+
+</sc-if>
+
+<sc-if value="{{ isShop }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Shop" style="max-width:1320px;margin:0 auto;padding:24px 40px 96px">
+  <div style="display:flex;flex-direction:column;gap:12px;padding:32px 0 28px;border-bottom:1px solid #DDD5C6;margin-bottom:28px">
+    <span style="font-size:12px;letter-spacing:0.28em;color:#B08D57;text-transform:uppercase">The collection</span>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap"><h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(40px,5vw,64px);line-height:1">Shop all</h1><span style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#6B6A5C">{{ shopCount }}</span></div>
+  </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px">
+    <sc-for list="{{ chips }}" as="c" hint-placeholder-count="6">
+      <button data-cat="{{ c.name }}" onClick="{{ setCat }}" style="cursor:pointer;background:{{ c.bg }};color:{{ c.color }};border:1px solid {{ c.border }};border-radius:999px;padding:10px 20px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.14em;text-transform:uppercase">{{ c.name }}</button>
+    </sc-for>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:32px 24px">
+    <sc-for list="{{ shopProducts }}" as="p" hint-placeholder-count="0">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="aspect-ratio:1/1.15;border-radius:16px;overflow:hidden;background:#EDE6D8"><div role="img" aria-label="{{ p.name }}" style="{{ p.bgStyle }}"></div></div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#B08D57">{{ p.cat }}</span><span style="font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:600">{{ p.name }}</span><span style="font-size:13px;color:#6B6A5C">{{ p.desc }}</span><span style="font-size:15px;font-weight:500;margin-top:6px">{{ p.priceText }}</span></div>
+          <button data-id="{{ p.id }}" onClick="{{ addToCart }}" style="width:100%;border:none;cursor:pointer;background:#4E5A36;color:#FAF7F1;border-radius:999px;padding:14px 18px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.14em;text-transform:uppercase" style-hover="background:#3E4829">{{ p.btn }}</button>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isCart }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Cart" style="max-width:1320px;margin:0 auto;padding:24px 40px 96px">
+  <div style="display:flex;flex-direction:column;gap:12px;padding:32px 0 28px;border-bottom:1px solid #DDD5C6;margin-bottom:36px">
+    <span style="font-size:12px;letter-spacing:0.28em;color:#B08D57;text-transform:uppercase">Your bag</span>
+    <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(40px,5vw,64px);line-height:1">Shopping cart</h1>
+  </div>
+  <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:20px;padding:72px 0;text-align:center">
+      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#B08D57" stroke-width="1.1"><path d="M5 8h14l-1 13H6zM9 8V6a3 3 0 0 1 6 0v2"></path></svg>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:32px">Your cart is empty</span>
+      <span style="font-size:15px;color:#6B6A5C">Nothing here yet — your ritual is waiting.</span>
+      <a href="#" onClick="{{ goShop }}" style="background:#4E5A36;color:#FAF7F1;padding:15px 28px;border-radius:999px;font-size:13px;letter-spacing:0.16em;text-transform:uppercase">Start shopping</a>
+    </div>
+  </sc-if>
+  <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:48px;align-items:start">
+      <div style="grid-column:span 1;display:flex;flex-direction:column">
+        <sc-for list="{{ cartLines }}" as="l" hint-placeholder-count="0">
+          <div style="display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:20px;align-items:center;padding:20px 0;border-bottom:1px solid #DDD5C6">
+            <div style="width:96px;height:112px;border-radius:12px;overflow:hidden;background:#EDE6D8"><div role="img" aria-label="{{ l.name }}" style="{{ l.bgStyle }}"></div></div>
+            <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600">{{ l.name }}</span>
+              <span style="font-size:13px;color:#6B6A5C">{{ l.desc }}</span>
+              <div style="display:flex;align-items:center;gap:14px;margin-top:6px;flex-wrap:wrap">
+                <div style="display:flex;align-items:center;border:1px solid #C9BFA9;border-radius:999px">
+                  <button data-id="{{ l.id }}" onClick="{{ decQty }}" style="width:34px;height:34px;border:none;background:transparent;cursor:pointer;font-size:18px;color:#2B2E22">−</button>
+                  <span style="min-width:24px;text-align:center;font-size:14px">{{ l.qty }}</span>
+                  <button data-id="{{ l.id }}" onClick="{{ incQty }}" style="width:34px;height:34px;border:none;background:transparent;cursor:pointer;font-size:18px;color:#2B2E22">+</button>
+                </div>
+                <button data-id="{{ l.id }}" onClick="{{ removeItem }}" style="border:none;background:transparent;cursor:pointer;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#6B6A5C;text-decoration:underline">Remove</button>
+              </div>
+            </div>
+            <span style="font-size:16px;font-weight:500">{{ l.totalText }}</span>
+          </div>
+        </sc-for>
+        <a href="#" onClick="{{ goShop }}" style="align-self:flex-start;margin-top:24px;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:#2B2E22;border-bottom:1px solid #B08D57;padding-bottom:4px">← Continue shopping</a>
+      </div>
+      <aside style="background:#FAF7F1;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:18px">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500">Order summary</span>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:4px;border-radius:2px;background:#E4DCCC;overflow:hidden"><div style="height:100%;width:{{ shipPct }};background:#B08D57"></div></div><span style="font-size:13px;color:#55574A">{{ shipNote }}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:15px"><span>Subtotal</span><span>{{ subtotalText }}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:15px"><span>Shipping</span><span>{{ shippingText }}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:18px;font-weight:500;padding-top:18px;border-top:1px solid #DDD5C6"><span>Total</span><span>{{ totalText }}</span></div>
+        <button style="border:none;cursor:pointer;background:#4E5A36;color:#FAF7F1;padding:17px;border-radius:999px;font-family:'Jost',sans-serif;font-size:13px;letter-spacing:0.18em;text-transform:uppercase" style-hover="background:#3E4829">Checkout</button>
+        <span style="font-size:12px;color:#6B6A5C;text-align:center">Secure payment · 30-day skin guarantee</span>
+      </aside>
+    </div>
+  </sc-if>
+</section>
+</sc-if>
+
+<footer style="max-width:1320px;margin:0 auto;padding:72px 40px 40px;display:flex;flex-direction:column;gap:48px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:40px">
+    <div style="display:flex;flex-direction:column;gap:14px;grid-column:span 1">
+      <span style="display:flex;flex-direction:column;align-items:flex-start;line-height:1;color:#4A4F3F"><span style="font-family:'Allura',cursive;font-size:58px;line-height:0.8;color:#B08D57;padding:6px 6px 0">M</span><span style="font-size:13px;letter-spacing:0.36em;margin-top:8px">MODEE</span><span style="font-size:9px;letter-spacing:0.3em;margin-top:5px">CREATIVE</span></span>
+      <p style="margin:0;font-size:14px;line-height:1.65;color:#55574A">Pure ingredients.<br>Honest results.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;font-size:14px"><span style="font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:6px">Shop</span><a href="#" style="color:#55574A">All products</a><a href="#" style="color:#55574A">Best sellers</a><a href="#" style="color:#55574A">Serums</a><a href="#" style="color:#55574A">Moisturizers</a><a href="#" style="color:#55574A">Gift sets</a></div>
+    <div style="display:flex;flex-direction:column;gap:10px;font-size:14px"><span style="font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:6px">Company</span><a href="#" style="color:#55574A">About us</a><a href="#" style="color:#55574A">Ingredients</a><a href="#" style="color:#55574A">Sustainability</a><a href="#" style="color:#55574A">Journal</a></div>
+    <div style="display:flex;flex-direction:column;gap:10px;font-size:14px"><span style="font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:6px">Help</span><a href="#" style="color:#55574A">Shipping</a><a href="#" style="color:#55574A">Returns</a><a href="#" style="color:#55574A">Track order</a><a href="#" style="color:#55574A">Contact</a></div>
+    <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+      <span style="font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase">Newsletter</span>
+      <span style="font-size:14px;line-height:1.6;color:#55574A">Rituals, restocks and 10% off your first order.</span>
+      <div style="display:flex;border:1px solid #C9BFA9;background:#FAF7F1">
+        <input placeholder="Your email" style="flex:1;min-width:0;border:none;background:transparent;padding:13px 14px;font-family:'Jost',sans-serif;font-size:14px;color:#2B2E22;outline:none"></input>
+        <button style="border:none;background:#4E5A36;color:#FAF7F1;width:48px;cursor:pointer;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:24px;border-top:1px solid #DDD5C6;font-size:12px;letter-spacing:0.08em;color:#6B6A5C"><span>© 2026 Modee Creative</span><span>Made in small batches · Be kind to your skin</span></div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Arch&quot;,&quot;Full-bleed&quot;],&quot;default&quot;:&quot;Full-bleed&quot;,&quot;tsType&quot;:&quot;'Arch' | 'Full-bleed'&quot;},&quot;showAnnouncement&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const PRODUCTS = [
+  { id: '1', name: 'Oat Milk Cleanser', desc: 'Gentle daily wash · 150 ml', price: 28, cat: 'Cleanse & Tone', img: 'images/cleanser-hands.png' },
+  { id: '2', name: 'Radiance Glow Serum', desc: 'Niacinamide + hyaluronic · 30 ml', price: 45, cat: 'Serums & Oils', img: 'images/serum-shelf.png' },
+  { id: '3', name: 'Barrier Repair Cream', desc: 'Squalane + ceramides · 50 ml', price: 42, cat: 'Moisturizers', img: 'images/cream-jar.png' },
+  { id: '4', name: 'Centella Calming Toner', desc: 'Soothe & balance · 150 ml', price: 32, cat: 'Cleanse & Tone', img: 'images/glass-bottle.png' },
+  { id: '5', name: 'Daily Suncare SPF 50', desc: 'Lightweight mineral · 50 ml', price: 30, cat: 'Sun Care', img: 'images/suncare.png' },
+  { id: '6', name: 'Dew Drop Face Oil', desc: 'Cold-pressed botanicals · 30 ml', price: 38, cat: 'Serums & Oils', img: 'images/serum-dropper.png' },
+  { id: '7', name: 'Jade Gua Sha', desc: 'Hand-carved facial tool', price: 36, cat: 'Tools & Sets', img: 'images/gua-sha.png' },
+  { id: '8', name: 'Complete Ritual Set', desc: 'Cleanser, serum, cream & SPF', price: 125, cat: 'Tools & Sets', img: 'images/group.png' },
+];
+const CATS = ['All', 'Cleanse & Tone', 'Serums & Oils', 'Moisturizers', 'Sun Care', 'Tools & Sets'];
+const eur = n => '€' + n.toFixed(2);
+class Component extends DCLogic {
+  state = { view: 'home', cat: 'All', cart: {} };
+  componentDidMount() {
+    try { const c = JSON.parse(localStorage.getItem('verdelle-cart') || '{}'); if (c && typeof c === 'object') this.setState({ cart: c }); } catch (e) {}
+  }
+  setCart(fn) {
+    this.setState(s => { const cart = fn({ ...s.cart }); try { localStorage.setItem('verdelle-cart', JSON.stringify(cart)); } catch (e) {} return { cart }; });
+  }
+  go(view, extra) { this.setState({ view, ...(extra || {}) }, () => window.scrollTo(0, 0)); }
+  renderVals() {
+    const hero = this.props.heroStyle ?? 'Full-bleed';
+    const { view, cat, cart } = this.state;
+    const pv = e => { if (e && e.preventDefault) e.preventDefault(); };
+    const idOf = e => e.currentTarget.dataset.id;
+    const lines = PRODUCTS.filter(p => cart[p.id]).map(p => ({ ...p, bgStyle: { width: '100%', height: '100%', backgroundImage: 'url(' + p.img + ')', backgroundSize: 'cover', backgroundPosition: 'center' }, qty: cart[p.id], totalText: eur(p.price * cart[p.id]) }));
+    const count = lines.reduce((a, l) => a + l.qty, 0);
+    const sub = lines.reduce((a, l) => a + l.price * l.qty, 0);
+    const ship = sub === 0 || sub >= 50 ? 0 : 5.9;
+    const shown = PRODUCTS.filter(p => cat === 'All' || p.cat === cat);
+    const active = (on) => on ? { bg: '#4E5A36', color: '#FAF7F1', border: '#4E5A36' } : { bg: 'transparent', color: '#2B2E22', border: '#C9BFA9' };
+    return {
+      isHome: view === 'home', isShop: view === 'shop', isCart: view === 'cart',
+      navHomeBg: view === 'home' ? '#4E5A36' : 'transparent', navHomeColor: view === 'home' ? '#FAF7F1' : '#2B2E22',
+      navShopBg: view === 'shop' ? '#4E5A36' : 'transparent', navShopColor: view === 'shop' ? '#FAF7F1' : '#2B2E22',
+      goHome: e => { pv(e); this.go('home'); },
+      goShop: e => { pv(e); const c = e && e.currentTarget && e.currentTarget.dataset && e.currentTarget.dataset.cat; this.go('shop', { cat: c || 'All' }); },
+      goCart: () => this.go('cart'),
+      navTo: e => {
+        pv(e); const id = e.currentTarget.dataset.target;
+        const scroll = () => { const el = document.getElementById(id); if (el) window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - 16); };
+        if (this.state.view === 'home') scroll(); else this.setState({ view: 'home' }, () => setTimeout(scroll, 60));
+      },
+      chips: CATS.map(c => ({ name: c, ...active(c === cat) })),
+      setCat: e => this.setState({ cat: e.currentTarget.dataset.cat }),
+      shopProducts: shown.map(p => ({ ...p, bgStyle: { width: '100%', height: '100%', backgroundImage: 'url(' + p.img + ')', backgroundSize: 'cover', backgroundPosition: 'center' }, priceText: eur(p.price), btn: cart[p.id] ? 'Add to cart · ' + cart[p.id] + ' in bag' : 'Add to cart' })),
+      shopCount: shown.length + (shown.length === 1 ? ' product' : ' products'),
+      cartLines: lines, hasItems: count > 0, isEmpty: count === 0,
+      incQty: e => { const id = idOf(e); this.setCart(c => { c[id] = (c[id] || 0) + 1; return c; }); },
+      decQty: e => { const id = idOf(e); this.setCart(c => { if (c[id] > 1) c[id]--; else delete c[id]; return c; }); },
+      removeItem: e => { const id = idOf(e); this.setCart(c => { delete c[id]; return c; }); },
+      subtotalText: eur(sub), shippingText: ship === 0 ? 'Free' : eur(ship), totalText: eur(sub + ship),
+      shipPct: Math.min(100, sub / 50 * 100) + '%',
+      shipNote: sub >= 50 ? 'You’ve unlocked free shipping' : 'Add ' + eur(50 - sub) + ' more for free shipping',
+      cartCount: count,
+      addToCart: e => { const id = idOf(e); this.setCart(c => { c[id] = (c[id] || 0) + 1; return c; }); },
+      isArch: hero === 'Arch',
+      isFull: hero === 'Full-bleed',
+      showAnnouncement: this.props.showAnnouncement ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>
