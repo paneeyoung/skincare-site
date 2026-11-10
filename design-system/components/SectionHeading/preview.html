@@ -1,0 +1,11 @@
+<!-- @dsCard group="Brand" height=260 -->
+<style>body{margin:0;padding:24px;background:var(--bg-page);font-family:var(--font-body);color:var(--text-1)}.row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}</style>
+<div id="root"></div>
+<script>
+var M=window.ModeeSkincare,h=React.createElement;
+function Demo(){return h('div',{style:{display:'grid',gap:24}},
+ h(M.SectionHeading,{eyebrow:'The ritual',title:'Hydrate. Restore. Glow naturally.'}),
+ h(M.SectionHeading,{eyebrow:'Our promise',title:'Pure ingredients',align:'center'}),
+ h('div',{style:{background:'var(--bg-inverse)',padding:28,borderRadius:16}},h(M.SectionHeading,{eyebrow:'Daily skin ritual',title:'Three steps, every day',inverse:true})));}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

@@ -1,0 +1,10 @@
+<!-- @dsCard group="Actions" height=150 -->
+<style>body{margin:0;padding:24px;background:var(--bg-page);font-family:var(--font-body);color:var(--text-1)}.row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}</style>
+<div id="root"></div>
+<script>
+var M=window.ModeeSkincare,h=React.createElement;
+function Demo(){return h('div',null,
+ h('div',{className:'row'},h(M.Button,null,'Shop now'),h(M.Button,{arrow:true},'Discover the ritual'),h(M.Button,{variant:'outline'},'View all'),h(M.Button,{variant:'link'},'Our story'),h(M.Button,{size:'sm'},'Add to cart')),
+ h('div',{className:'row',style:{background:'var(--bg-inverse)',padding:20,marginTop:16,borderRadius:16}},h(M.Button,{variant:'light'},'Shop the ritual')));}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

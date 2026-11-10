@@ -1,0 +1,8 @@
+<!-- @dsCard group="Shop" height=360 -->
+<style>body{margin:0;padding:24px;background:var(--bg-page);font-family:var(--font-body);color:var(--text-1)}.row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}</style>
+<div id="root"></div>
+<script>
+var M=window.ModeeSkincare,h=React.createElement;
+function Demo(){return h('div',{style:{display:'grid',gridTemplateColumns:'repeat(3,200px)',gap:20}},h(M.CategoryCard,{name:'Serums'}),h(M.CategoryCard,{name:'Moisturisers'}),h(M.CategoryCard,{name:'Cleansers'}));}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

@@ -1,0 +1,9 @@
+<!-- @dsCard group="Shop" height=120 -->
+<style>body{margin:0;padding:24px;background:var(--bg-page);font-family:var(--font-body);color:var(--text-1)}.row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}</style>
+<div id="root"></div>
+<script>
+var M=window.ModeeSkincare,h=React.createElement;
+function Demo(){var s=React.useState(1),v=s[0],set=s[1];
+return h(M.QuantityStepper,{value:v,onInc:function(){set(v+1)},onDec:function(){set(Math.max(1,v-1))}});}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

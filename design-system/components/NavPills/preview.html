@@ -1,0 +1,9 @@
+<!-- @dsCard group="Content" height=120 -->
+<style>body{margin:0;padding:24px;background:var(--bg-page);font-family:var(--font-body);color:var(--text-1)}.row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}</style>
+<div id="root"></div>
+<script>
+var M=window.ModeeSkincare,h=React.createElement;
+function Demo(){var s=React.useState('Home'),a=s[0],set=s[1];
+return h(M.NavPills,{items:['Home','Shop','Ritual','Journal','About'],active:a,onSelect:set});}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>

@@ -1,0 +1,10 @@
+<!-- @dsCard group="Shop" height=520 -->
+<style>body{margin:0;padding:24px;background:var(--bg-page);font-family:var(--font-body);color:var(--text-1)}.row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}</style>
+<div id="root"></div>
+<script>
+var M=window.ModeeSkincare,h=React.createElement;
+function Demo(){return h('div',{style:{display:'grid',gridTemplateColumns:'repeat(2,240px)',gap:24}},
+ h(M.ProductCard,{name:'Radiance Serum',category:'Serums',desc:'Vitamin C + hyaluronic acid · 30 ml',price:'€42.00'}),
+ h(M.ProductCard,{name:'Cloud Cream',category:'Moisturisers',desc:'Squalane + ceramides · 50 ml',price:'€38.00',inBag:2}));}
+ReactDOM.createRoot(document.getElementById('root')).render(h(Demo));
+</script>
